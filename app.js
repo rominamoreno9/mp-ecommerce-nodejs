@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+const PORT = process.env.PORT || 3000;
  
 var app = express();
  
@@ -18,4 +19,6 @@ app.use(express.static('assets'));
  
 app.use('/assets', express.static(__dirname + '/assets'));
  
-app.listen(3000);
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
