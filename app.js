@@ -25,7 +25,7 @@ app.get('/detail', function (req, res) {
     res.render('detail', qry);
 });
 
-app.get('/payment/success', function (req, res) {
+app.get('/success', function (req, res) {
 
     let qry = req.query;
     qry.view = '';
@@ -33,14 +33,14 @@ app.get('/payment/success', function (req, res) {
     res.render('success', qry);
 });
 
-app.get('/payment/failure', function (req, res) {
+app.get('/failure', function (req, res) {
     let qry = req.query;
     qry.view = '';
     console.log(JSON.stringify(qry));
     res.render('failure', qry);
 });
 
-app.get('/payment/pending', function (req, res) {
+app.get('/pending', function (req, res) {
     let qry = req.query;
     qry.view = '';
     console.log(JSON.stringify(qry));
@@ -50,7 +50,7 @@ app.get('/payment/pending', function (req, res) {
 app.post('/payment', (req,res) => mpIntegration.postPreferences(req,res));
 
 app.post('/mp/notification',function(req, res) {
-    console.log(req.body);
+    console.log('NOTIFICATION: ',req.body);
     res.statusCode = 200;
     res.end("OK");
 });

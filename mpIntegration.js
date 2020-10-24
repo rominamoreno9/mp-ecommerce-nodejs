@@ -57,9 +57,9 @@ module.exports.postPreferences = (req,res) => {
         },
 
         back_urls: {
-            success: "https://rominamoreno9-mp-commerce-node.herokuapp.com/payment/success",
-            failure: "https://rominamoreno9-mp-commerce-node.herokuapp.com/payment/failure",
-            pending: "https://rominamoreno9-mp-commerce-node.herokuapp.com/payment/pending"
+            success: "https://rominamoreno9-mp-commerce-node.herokuapp.com/success",
+            failure: "https://rominamoreno9-mp-commerce-node.herokuapp.com/failure",
+            pending: "https://rominamoreno9-mp-commerce-node.herokuapp.com/pending"
 
         },
         auto_return: "approved",
