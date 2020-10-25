@@ -1,6 +1,8 @@
 const express = require('express');
 const mercadopago = require('mercadopago');
 const bodyParser = require('body-parser');
+const http = require('http');
+const url = require('url') ;
 
 const mpIntegration = express.Router();
 mpIntegration.use(bodyParser.urlencoded({ extended: true }));
@@ -11,8 +13,8 @@ mercadopago.configure({
 });
 
 module.exports.postPreferences = (req,res) => {
-    console.log(JSON.stringify(req.body));
     const item = req.body;
+    const imgPath =  'https://rominamoreno9-mp-commerce-node.herokuapp.com/' + item.img.substring(2,item.img.length);
 
     var preference = {
         items: [
@@ -23,7 +25,7 @@ module.exports.postPreferences = (req,res) => {
             quantity: parseInt(item.unit),
             currency_id: 'ARS',
             unit_price: Number(item.price),
-            picture_url: item.img
+            picture_url: imgPath
           }
         ],
 
@@ -82,7 +84,7 @@ module.exports.postPreferences = (req,res) => {
         console.log(errmess);
     })
     .then(response => {
-        console.log('OK',response);
+        console.log('PREFERENCES: ',response);
         res.redirect(response.body.init_point);
     })
     .catch(error => {

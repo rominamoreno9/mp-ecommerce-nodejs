@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
@@ -21,7 +21,6 @@ app.get('/', function (req, res) {
 app.get('/detail', function (req, res) {
     let qry = req.query;
     qry.view = 'item';
-    console.log(JSON.stringify(qry));
     res.render('detail', qry);
 });
 
@@ -29,21 +28,18 @@ app.get('/success', function (req, res) {
 
     let qry = req.query;
     qry.view = '';
-    console.log(JSON.stringify(qry));
     res.render('success', qry);
 });
 
 app.get('/failure', function (req, res) {
     let qry = req.query;
     qry.view = '';
-    console.log(JSON.stringify(qry));
     res.render('failure', qry);
 });
 
 app.get('/pending', function (req, res) {
     let qry = req.query;
     qry.view = '';
-    console.log(JSON.stringify(qry));
     res.render('pending', qry);
 });
 
